@@ -1,0 +1,54 @@
+<h1>xtool</h1>
+<p>Cross-platform Xcode replacement. Build and deploy iOS apps with SwiftPM on Linux, Windows, and macOS.</p>
+<h2>Overview</h2>
+<p>xtool is a cross-platform (Linux/WSL/macOS) tool that replicates Xcode functionality with open standards.</p>
+<p>✅ Build a SwiftPM package into an iOS app</p>
+<p>✅ Sign and install iOS apps</p>
+<p>✅ Interact with Apple Developer Services programmatically</p>
+<h2>Getting Started</h2>
+<ol>
+<li>Follow the guide to install <code>xtool</code>
+<ul>
+<li><a href="https://xtool.sh/documentation/xtooldocs/installation-linux">Installation (Linux/Windows)</a></li>
+<li><a href="https://xtool.sh/documentation/xtooldocs/installation-macos">Installation (macOS)</a></li>
+</ul>
+</li>
+<li>Create and run your first xtool-powered app by following the <a href="https://xtool.sh/tutorials/xtooldocs/first-app">tutorial</a>!</li>
+</ol>
+<h2>Examples</h2>
+<h3>Screenshot</h3>
+<p><img src="Documentation/xtool.docc/Resources/Cover.png" alt="A screenshot of xtool being invoked from VSCode" /></p>
+<h3>Command line interface</h3>
+<pre><code class="language-bash">$ xtool --help
+OVERVIEW: Cross-platform Xcode replacement
+
+USAGE: xtool &lt;subcommand&gt;
+
+OPTIONS:
+  -h, --help              Show help information.
+
+CONFIGURATION SUBCOMMANDS:
+  setup                   Set up xtool for iOS development
+  auth                    Manage Apple Developer Services authentication
+  sdk                     Manage the Darwin Swift SDK
+
+DEVELOPMENT SUBCOMMANDS:
+  new                     Create a new xtool SwiftPM project
+  dev                     Build and run an xtool SwiftPM project
+  ds                      Interact with Apple Developer Services
+
+DEVICE SUBCOMMANDS:
+  devices                 List devices
+  install                 Install an ipa file to your device
+  uninstall               Uninstall an installed app
+  launch                  Launch an installed app
+
+  See 'xtool help &lt;subcommand&gt;' for detailed help.
+</code></pre>
+<h3>Library</h3>
+<p>xtool includes a library that you can use to interact with Apple Developer Services, iOS devices, and more from your own app. You can use this by adding <code>XKit</code> as a SwiftPM dependency.</p>
+<pre><code class="language-swift">// package dependency:
+.package(url: &quot;https://github.com/xtool-org/xtool&quot;, .upToNextMinor(from: &quot;1.2.0&quot;))
+// target dependency:
+.product(name: &quot;XKit&quot;, package: &quot;xtool&quot;)
+</code></pre>
