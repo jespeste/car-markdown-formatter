@@ -12,5 +12,7 @@ fn main() -> std::io::Result<()>{
     fs::write("temp.html", &html_version)?;
 
     Command::new("lynx").arg("temp.html").spawn()?.wait()?;
+
+    fs::remove_file("temp.html")?;
     Ok(())
 }
