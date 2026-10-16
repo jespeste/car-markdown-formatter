@@ -9,6 +9,21 @@ The cli tool `cat`, but for markdown in the terminal. Aptly named car.
 
 You need to install the [lynx](https://lynx.invisible-island.net/) browser to view the "rendered" markdown document.
 
+## Usage
+Clone this repo:
+```
+git clone https://github.com/jespeste/car-markdown-formatter
+```
+
+Install into path
+```
+cd car-markdown-formatter
+cargo install --path .
+```
+You can now use car with any markdown file like you would cat
+```
+car README.md
+```
+
 ## Known limitations
 - Lynx is not a very good browser: Formatting may not be as expected
-
