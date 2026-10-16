@@ -1,6 +1,8 @@
 use std::env;
+use std::io::Write;
 use std::fs;
 use std::process::Command;
+use tempfile::NamedTempFile;
 
 fn main() -> std::io::Result<()>{
     let args: Vec<String> = env::args().collect();
@@ -9,10 +11,12 @@ fn main() -> std::io::Result<()>{
 
     let contents = fs::read_to_string(filepath).expect("Filepath should be valid");
     let html_version = markdown::to_html(&contents);
-    fs::write("temp.html", &html_version)?;
 
-    Command::new("lynx").arg("temp.html").spawn()?.wait()?;
+    let mut tempfile = NamedTempFile::new()?;
 
-    fs::remove_file("temp.html")?;
+    write!(tempfile,"{}",&html_version)?;
+
+    Command::new("lynx").arg("-force_html").arg(tempfile.path()).spawn()?.wait()?;
+
     Ok(())
 }
